@@ -64,7 +64,8 @@ RUN curl --silent --show-error --fail --location \
     apk del .build-deps && \
     rm -rf /tmp/*
 # install notadd
-RUN git clone https://github.com/notadd/notadd.git && \
+RUN cd /var && \
+    git clone https://github.com/notadd/notadd.git && \
     chown -R www-data:www-data notadd && \
     cd notadd && \
     composer install && \
