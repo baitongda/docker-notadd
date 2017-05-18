@@ -32,7 +32,7 @@ docker-php-ext-install mcrypt zip iconv && \
 docker-php-ext-install pdo_mysql mysqli mbstring json opcache fileinfo && \
 # echo "opcache.enable_cli=1" >>  /usr/local/etc/php/conf.d/docker-php-ext-opcache.ini &&\
 
-docker-php-ext-install pdo_pgsql pgsql && \
+docker-php-ext-install pdo_pgsql pgsql 
 
 
 RUN { \
