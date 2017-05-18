@@ -71,7 +71,7 @@ RUN cd /var && \
     composer install && \
     php notadd vendor:publish --force
 
-EXPOSE 80 443 2015
+EXPOSE 80 443 2015 9000
 
 
 COPY Caddyfile /etc/Caddyfile
