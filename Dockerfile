@@ -56,9 +56,9 @@ RUN curl --silent --show-error --fail --location \
     | tar --no-same-owner -C /usr/bin/ -xz caddy \
     && chmod 0755 /usr/bin/caddy \
     && /usr/bin/caddy -version && \
-    mkdir -p /var/www && mkdir -p /var/log
-    echo 'log_errors = On' > /usr/local/etc/php/conf.d/log.ini && \
-    echo 'error_log=/var/www/log' > /usr/local/etc/php/conf.d/log.ini && \
+    mkdir -p /var/www && mkdir -p /var/log && \
+    echo "log_errors = On" > /usr/local/etc/php/conf.d/log.ini && \
+    echo "error_log=/var/www/log" > /usr/local/etc/php/conf.d/log.ini && \
     chown -R www-data:www-data  /var && \
     cd && \
     apk del .build-deps && \
