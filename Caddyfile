@@ -1,6 +1,6 @@
 0.0.0.0:80 {
     root /var/notadd/public
-    fastcgi / php-fpm:9000 php {
+    fastcgi / 127.0.0.1:9000 php {
         index index.php
     }
 
@@ -19,6 +19,7 @@
         to /index.php?{query}
     }
     gzip
+    startup php-fpm
     # enable SSL
     # tls tls@notadd.com 
     # log /var/log/access.log
