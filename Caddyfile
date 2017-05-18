@@ -21,6 +21,6 @@
     gzip
     # enable SSL
     # tls tls@notadd.com 
-    log /var/log/caddy/access.log
-    errors /var/log/caddy/error.log
+    # log /var/log/access.log
+    # errors /var/log/error.log
 }
