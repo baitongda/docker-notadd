@@ -1,0 +1,26 @@
+0.0.0.0:80 {
+    root /var/www/public
+    fastcgi / php-fpm:9000 php {
+        index index.php
+    }
+
+
+# To handle .html extensions with laravel change ext to
+# ext / .html
+
+# 开启 git同步，60秒自动拉取
+# git https://github.com/notadd/notadd.git /home/wwwroot/notadd {
+#    interval 60
+#}
+
+    rewrite {
+        r .*
+        ext /
+        to /index.php?{query}
+    }
+    gzip
+    # enable SSL
+    # tls tls@notadd.com 
+    log /var/log/caddy/access.log
+    errors /var/log/caddy/error.log
+}
