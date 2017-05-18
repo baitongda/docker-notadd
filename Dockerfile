@@ -2,7 +2,7 @@ FROM php:fpm-alpine
 MAINTAINER HuadongZuo <admin@zuohuadong.cn>
 # RUN apk update && \
 #     apk upgrade
-ARG plugins=http.git
+ARG plugins=http.cgi,http.cors,http.filemanager,http.git,http.proxyprotocol,http.realip,http.upload,net
 
 RUN echo "http://nl.alpinelinux.org/alpine/latest-stable/main" > /etc/apk/repositories \
 && echo "http://nl.alpinelinux.org/alpine/edge/testing/" >> /etc/apk/repositories \
@@ -59,7 +59,6 @@ RUN curl --silent --show-error --fail --location \
     mkdir -p /var/www && mkdir -p /var/log && \
     echo "log_errors = On" > /usr/local/etc/php/conf.d/log.ini && \
     echo "error_log=/var/www/log" > /usr/local/etc/php/conf.d/log.ini && \
-    chown -R www-data:www-data  /var && \
     cd && \
     apk del .build-deps && \
     rm -rf /tmp/*
@@ -73,6 +72,7 @@ RUN cd /var && \
 
 EXPOSE 80 443 2015 9000
 
+WORKDIR /var
 
 COPY Caddyfile /etc/Caddyfile
 
