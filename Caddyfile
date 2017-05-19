@@ -1,5 +1,5 @@
 0.0.0.0:80 {
-    root /var/notadd/public
+    root /var/www/notadd/public
     fastcgi / 127.0.0.1:9000 php {
         index index.php
     }
