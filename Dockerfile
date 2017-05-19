@@ -70,6 +70,8 @@ RUN cd /var && \
     composer install && \
     php notadd vendor:publish --force
 
+RUN usermod -u 1000 www-data
+
 EXPOSE 80 443 2015 9000
 
 WORKDIR /var
