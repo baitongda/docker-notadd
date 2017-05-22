@@ -63,7 +63,7 @@ RUN curl --silent --show-error --fail --location \
     apk del .build-deps && \
     rm -rf /tmp/*
 # install notadd
-RUN cd /var && \
+RUN cd /var/www && \
     git clone https://github.com/notadd/notadd.git && \
     chown -R www-data:www-data notadd && \
     cd notadd && \
@@ -74,9 +74,11 @@ RUN usermod -u 1000 www-data
 
 EXPOSE 80 443 2015 9000
 
-WORKDIR /var
+WORKDIR /var/www
 
 COPY Caddyfile /etc/Caddyfile
 
 
-CMD ["/usr/bin/caddy","php-fpm"]
+ENTRYPOINT ["/usr/bin/caddy"]
+CMD ["--conf", "/etc/Caddyfile", "--log", "stdout"]
+

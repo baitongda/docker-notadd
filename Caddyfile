@@ -19,6 +19,7 @@
         to /index.php?{query}
     }
     gzip
+    startup php-fpm &
     # startup php-fpm
     # enable SSL
     # tls tls@notadd.com 
