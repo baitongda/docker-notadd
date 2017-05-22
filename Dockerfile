@@ -79,6 +79,4 @@ WORKDIR /var
 COPY Caddyfile /etc/Caddyfile
 
 
-ENTRYPOINT ["/usr/bin/caddy"]
-CMD ["--conf", "/etc/Caddyfile", "--log", "stdout","php-fpm"]
-
+CMD ["/usr/bin/caddy","php-fpm"]
