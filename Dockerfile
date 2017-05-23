@@ -65,12 +65,10 @@ RUN curl --silent --show-error --fail --location \
 # install notadd
 RUN cd /var/www && \
     git clone https://github.com/notadd/notadd.git && \
-    chown -R www-data:www-data notadd && \
+    chmod -R 777 notadd && \
     cd notadd && \
     composer install && \
     php notadd vendor:publish --force
-
-RUN usermod -u 1000 www-data
 
 EXPOSE 80 443 2015 9000
 
