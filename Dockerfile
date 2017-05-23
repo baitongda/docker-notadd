@@ -53,9 +53,9 @@ RUN curl --silent --show-error --fail --location \
 RUN curl --silent --show-error --fail --location \
       --header "Accept: application/tar+gzip, application/x-gzip, application/octet-stream" -o - \
       "https://caddyserver.com/download/linux/amd64?plugins=${plugins}" \
-    | tar --no-same-owner -C /usr/bin/ -xz caddy \
-    && chmod 0755 /usr/bin/caddy \
-    && /usr/bin/caddy -version && \
+    | tar --no-same-owner -C /usr/bin/ -xz caddy  && \
+    chmod 0755 /usr/bin/caddy  && \
+    /usr/bin/caddy -version && \
     mkdir -p /var/www && mkdir -p /var/log && \
     echo "log_errors = On" > /usr/local/etc/php/conf.d/log.ini && \
     echo "error_log=/var/www/log" > /usr/local/etc/php/conf.d/log.ini && \
@@ -65,10 +65,12 @@ RUN curl --silent --show-error --fail --location \
 # install notadd
 RUN cd /var/www && \
     git clone https://github.com/notadd/notadd.git && \
-    chmod -R 777 notadd && \
     cd notadd && \
     composer install && \
     php notadd vendor:publish --force
+
+RUN cd /var/www && \
+    chmod -R 777 ./*
 
 EXPOSE 80 443 2015 9000
 
