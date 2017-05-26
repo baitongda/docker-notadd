@@ -33,3 +33,7 @@ docker exec -ti notadd /bin/sh
 ### 自定义网站配置
 
 默认不支持网站自定义配置，如需要配置开发或生产环境，建议使用 laradock。
+
+## 使用laradock 安装
+
+参见： https://docs.notadd.com/laradock/
